@@ -99,8 +99,9 @@ class SortingRobot:
         # Fill this out
         while not self.light_is_on():
             print('light', self.light_is_on())
+            self.set_light_on()
+            print('light', self.light_is_on())
             if self.can_move_right():
-                self.set_light_on()
                 while self.can_move_right():
                     # print('moving right', self._position, self._list)
                     self.swap_item()
@@ -115,14 +116,11 @@ class SortingRobot:
                         self.move_left()
                         self.swap_item()
                         self.move_right()
-                        self.set_light_off()
-                    else:
                         self.set_light_on()
                     # print('moving right PREVIEW', self._position, self._list)
                 
                 # print('moving right Done', self._position, self._list)
             else:                
-                self.set_light_on()
                 while self.can_move_left():
                     # print('moving left', self._position, self._list, self._item)
                     self.swap_item()
@@ -134,15 +132,13 @@ class SortingRobot:
                         self.move_right()
                         self.swap_item()
                         self.move_left()
-                        self.set_light_off()
+                        self.set_light_on()
                     elif self.compare_item() < 0:
                         self.swap_item()
                         self.move_right()
                         self.swap_item()
                         self.move_left()
                         self.set_light_off()
-                    else:
-                        self.set_light_on()
                     # print('moving left list PREVIEW ', self._position, self._list)
             # if self.light_is_on()
             
